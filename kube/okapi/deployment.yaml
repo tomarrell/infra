@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: okapi-deployment
+  labels:
+    app: okapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: okapi
+  template:
+    metadata:
+      labels:
+        app: okapi
+    spec:
+      containers:
+      - name: okapi
+        image: docker.io/tomarrell/personal:latest
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+        - name: regcred
