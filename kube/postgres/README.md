@@ -1,14 +1,18 @@
 # Postgres
-This directory contains the files necessary to configure and deploy Postgres to
-my personal cluster.
+This directory contains the files necessary to configure and deploy a Postgres
+instance to my personal cluster.
 
 # Deployment
-The resources should be applied in the following order:
+This is deployed as a Kustomize application. Before the kustomization can be
+applied, the env file must first be decrypted.
 
-1. ConfigMap: This should be applied while replacing the `$PASSWORD` variable
-   with the intended value.
-2. PVC: Will create and attach a Digital Ocean block storage volume. This volume
-   is unfortunately only writable from a single node however due to their
-   limitations.
-3. Deployment
-4. Service
+To decrypt the env file, run the following command:
+```bash
+age -d -i ~/.ssh/tomssh.pem -o ./postgres.env ./postgres.env.encrypted
+```
+
+Then you can apply the customization to the cluster.
+
+```bash
+kubectl apply -k .
+```
