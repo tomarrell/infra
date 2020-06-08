@@ -1,4 +1,3 @@
-# kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
@@ -9,9 +8,9 @@ resources:
 
 namespace: default
 
-commonLabels: 
+commonLabels:
   app: postgres
-  
+
 configMapGenerator:
 - name: postgres-configmap
   env: postgres.env
