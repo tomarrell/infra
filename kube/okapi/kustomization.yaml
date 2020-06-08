@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- deployment.yaml
+
+commonLabels: 
+  app: okapi
+
+images:
+- name: okapi
+  newName: docker.io/tomarrell/personal
+  newTag: latest
+
+configMapGenerator:
+- name: okapi-configmap
+  env: okapi.env
+
+secretGenerator:
+- name: docker-registry-secret
+  env: docker-secret.env
+  type: "kubernetes.io/dockerconfigjson"

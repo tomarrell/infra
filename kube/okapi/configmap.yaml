@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: okapi-configmap
-data:
-  test: "this_is_a_test_value"
