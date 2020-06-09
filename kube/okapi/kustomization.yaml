@@ -3,6 +3,9 @@ kind: Kustomization
 
 resources:
 - okapi-deployment.yaml
+- pvc.yaml
+- timescaledb-deployment.yaml
+- timescaledb-service.yaml
 
 commonLabels:
   app: okapi
@@ -19,6 +22,8 @@ configMapGenerator:
 - name: okapi-configmap
   files:
   - ./secrets/config.yaml
+- name: timescaledb-configmap
+  env: ./secrets/timescaledb.env
 
 secretGenerator:
 - name: regcred

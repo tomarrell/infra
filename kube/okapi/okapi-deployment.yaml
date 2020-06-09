@@ -14,7 +14,7 @@ spec:
         volumeMounts:
         - mountPath: /mnt/config/config.yaml
           name: okapi-config
-          subPath: config.secret.yaml
+          subPath: config.yaml
       imagePullSecrets:
         - name: regcred
       volumes:

@@ -1,25 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-deployment
+  name: timescaledb-deployment
 spec:
   replicas: 1
   template:
+    metadata:
+      labels:
+        alt: timescale
     spec:
       containers:
-        - name: postgres
-          image: postgres:10.4
+        - name: timescaledb
+          image: timescale/timescaledb:latest-pg11
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
           envFrom:
             - configMapRef:
-                name: postgres-configmap
+                name: timescaledb-configmap
           volumeMounts:
             - mountPath: "/var/lib/postgresql/data"
-              name: postgresdb
-              subPath: postgres
+              name: timescaledb
+              subPath: timescaledb
       volumes:
-        - name: postgresdb
+        - name: timescaledb
           persistentVolumeClaim:
-            claimName: postgres-pvc
+            claimName: timescaledb-pvc
