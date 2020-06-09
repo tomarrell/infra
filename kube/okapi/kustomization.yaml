@@ -17,7 +17,8 @@ generatorOptions:
 
 configMapGenerator:
 - name: okapi-configmap
-  env: okapi.env
+  files:
+  - config.secret.yaml
 
 secretGenerator:
 - name: regcred

@@ -11,5 +11,13 @@ spec:
         image: okapi
         ports:
         - containerPort: 80
+        volumeMounts:
+        - mountPath: /mnt/config/config.yaml
+          name: okapi-config
+          subPath: config.secret.yaml
       imagePullSecrets:
         - name: regcred
+      volumes:
+      - name: okapi-config
+        configMap:
+          name: okapi-configmap
