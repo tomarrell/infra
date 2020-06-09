@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
 - deployment.yaml
 
-commonLabels: 
+commonLabels:
   app: okapi
 
 images:
@@ -12,11 +12,14 @@ images:
   newName: docker.io/tomarrell/personal
   newTag: latest
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 configMapGenerator:
 - name: okapi-configmap
   env: okapi.env
 
 secretGenerator:
-- name: docker-registry-secret
+- name: regcred
   env: docker-secret.env
-  type: "kubernetes.io/dockerconfigjson"
+  type: kubernetes.io/dockerconfigjson

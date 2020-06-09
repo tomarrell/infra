@@ -8,6 +8,7 @@ spec:
     spec:
       containers:
       - name: okapi
+        image: okapi
         ports:
         - containerPort: 80
       imagePullSecrets:
