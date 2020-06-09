@@ -13,4 +13,4 @@ commonLabels:
 
 configMapGenerator:
 - name: postgres-configmap
-  env: postgres.env
+  env: ./secrets/postgres.env
