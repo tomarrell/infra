@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: helloworld
+        image: helloworld
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred
