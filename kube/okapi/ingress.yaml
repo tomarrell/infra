@@ -12,5 +12,5 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: helloworld-service
+              serviceName: okapi-service
               servicePort: 80

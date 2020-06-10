@@ -29,11 +29,11 @@ spec:
         args:
         - --api
         - --api.insecure
-        - --api.dashboard=true
-        - --providers.kubernetesingress=true
+        - --api.dashboard
+        - --providers.kubernetesingress
         - --entryPoints.web.address=:80
         - --entryPoints.websecure.address=:443
-        - --log.level=debug
+        # - --log.level=debug
 
         # Let's Encrypt Configurtion:
         # Please note that this is the staging Let's Encrypt server configuration.

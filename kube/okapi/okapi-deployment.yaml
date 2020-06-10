@@ -5,12 +5,15 @@ metadata:
 spec:
   replicas: 1
   template:
+    metadata:
+      labels:
+        alt: okapi
     spec:
       containers:
       - name: okapi
         image: okapi
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         volumeMounts:
         - mountPath: /mnt/config/config.yaml
           name: okapi-config
