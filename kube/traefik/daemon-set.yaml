@@ -14,6 +14,9 @@ spec:
         - name: http
           containerPort: 80
           hostPort: 80
+        - name: https
+          containerPort: 443
+          hostPort: 443
         - name: admin
           containerPort: 8080
           hostPort: 8080
@@ -25,7 +28,17 @@ spec:
             - NET_BIND_SERVICE
         args:
         - --api
+        - --api.insecure
         - --api.dashboard=true
-        - --api.insecure=true
         - --providers.kubernetesingress=true
-        - --log.level=INFO
+        - --entryPoints.web.address=:80
+        - --entryPoints.websecure.address=:443
+        - --log.level=debug
+
+        # Let's Encrypt Configurtion:
+        # Please note that this is the staging Let's Encrypt server configuration.
+        # Once you get things working, you should remove that following line.
+        # - --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/dire
+        - --certificatesresolvers.default.acme.email=tom.arrell@gmail.com
+        - --certificatesresolvers.default.acme.storage=acme.json
+        - --certificatesresolvers.default.acme.tlschallenge

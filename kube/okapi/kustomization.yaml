@@ -6,6 +6,7 @@ resources:
 - pvc.yaml
 - timescaledb-deployment.yaml
 - timescaledb-service.yaml
+- ingress.yaml
 
 commonLabels:
   app: okapi
