@@ -12,4 +12,4 @@ commonLabels:
 images:
 - name: blog
   newName: docker.io/tomarrell/personal
-  newTag: blog-c0eb3dc
+  newTag: blog-70a6d9d
