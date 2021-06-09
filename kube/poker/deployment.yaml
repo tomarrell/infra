@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poker-deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: poker
+        image: poker
+        args:
+          - "-db=postgres://postgres@postgres-service/poker?sslmode=disable"
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred
