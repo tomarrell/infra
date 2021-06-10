@@ -10,7 +10,7 @@ spec:
       - name: poker
         image: poker
         args:
-          - "-db=postgres://postgres@postgres-service/poker?sslmode=disable"
+          - "-db=postgres://postgres:postgres@postgres-service/poker?sslmode=disable"
         ports:
         - containerPort: 8080
       imagePullSecrets:
