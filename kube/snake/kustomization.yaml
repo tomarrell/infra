@@ -3,13 +3,13 @@ kind: Kustomization
 
 resources:
 - deployment.yaml
-- ingress.yaml
 - service.yaml
+- ingress.yaml
 
 commonLabels:
-  app: blog
+  app: snake
 
 images:
-- name: blog
+- name: snake
   newName: docker.io/tomarrell/personal
-  newTag: blog-af72e44
+  newTag: snake-4cd6b39

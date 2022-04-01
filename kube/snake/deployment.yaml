@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snake-deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: snake
+        image: snake
+        resources:
+          limits:
+            cpu: "50m"
+            memory: "128Mi"
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred

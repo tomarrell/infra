@@ -17,17 +17,17 @@ images:
   newName: docker.io/tomarrell/personal
   newTag: 2ad0f60
 
-generatorOptions:
-  disableNameSuffixHash: true
+# generatorOptions:
+  # disableNameSuffixHash: true
 
-configMapGenerator:
-- name: okapi-configmap
-  files:
-  - ./secrets/config.yaml
-- name: timescaledb-configmap
-  env: ./secrets/timescaledb.env
+# configMapGenerator:
+# - name: okapi-configmap
+  # files:
+  # - ./secrets/config.yaml
+# - name: timescaledb-configmap
+  # env: ./secrets/timescaledb.env
 
-secretGenerator:
-- name: regcred
-  env: ./secrets/docker-auth.env
-  type: kubernetes.io/dockerconfigjson
+# secretGenerator:
+# - name: regcred
+  # env: ./secrets/docker-auth.env
+  # type: kubernetes.io/dockerconfigjson

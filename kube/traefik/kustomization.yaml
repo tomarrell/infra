@@ -7,6 +7,11 @@ resources:
 - service-account.yaml
 - daemon-set.yaml
 
+configMapGenerator:
+- name: acme-config
+  files:
+  - acme.json
+
 namespace: kube-system
 
 commonLabels:

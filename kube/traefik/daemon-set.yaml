@@ -8,8 +8,11 @@ spec:
       serviceAccountName: traefik-ingress-controller
       terminationGracePeriodSeconds: 60
       containers:
-      - image: traefik:v2.2
+      - image: traefik:v2.4
         name: traefik-ingress-lb
+        volumeMounts:
+        - name: acme-config
+          mountPath: /acme
         ports:
         - name: http
           containerPort: 80
@@ -30,6 +33,7 @@ spec:
         - --api.insecure
         - --api.dashboard
         - --providers.kubernetesingress
+        # - --providers.kubernetescrd
         - --entryPoints.web.address=:80
         - --entrypoints.web.http.redirections.entryPoint.to=websecure
         - --entrypoints.web.http.redirections.entryPoint.scheme=https
@@ -41,5 +45,11 @@ spec:
         # Once you get things working, you should remove that following line.
         # - --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/dire
         - --certificatesresolvers.default.acme.email=tom.arrell@gmail.com
-        - --certificatesresolvers.default.acme.storage=acme.json
+        - --certificatesresolvers.default.acme.storage=/acme/acme.json
         - --certificatesresolvers.default.acme.tlschallenge
+          
+      volumes:
+      - name: acme-config
+        configMap:
+          defaultMode: 0600
+          name: acme-config
