@@ -8,7 +8,7 @@ spec:
       serviceAccountName: traefik-ingress-controller
       terminationGracePeriodSeconds: 60
       containers:
-      - image: traefik:v2.4
+      - image: traefik:v2.9
         name: traefik-ingress-lb
         volumeMounts:
         - name: acme-config

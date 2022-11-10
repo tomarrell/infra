@@ -5,7 +5,7 @@ metadata:
 data:
   promtail.yaml: |
     clients:
-      - url: https://logs-prod-us-central1.grafana.net/loki/api/v1/push
+      - url: https://logs-prod-us-central1.grafana.net./loki/api/v1/push
         basic_auth:
           username: "USERNAME"
           password: "PASSWORD"
@@ -84,10 +84,10 @@ data:
               job: system
               __path__: /var/log/*log
 
-      # - job_name: containers
-        # static_configs:
-          # - targets:
-              # - localhost
-            # labels:
-              # job: containers
-              # __path__: /var/log/containers/*.log
+      - job_name: containers
+        static_configs:
+          - targets:
+              - localhost
+            labels:
+              job: containers
+              __path__: /var/log/containers/*.log

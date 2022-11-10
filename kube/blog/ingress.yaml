@@ -4,11 +4,11 @@ metadata:
   name: blog-ingress
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.certresolver: default
+    # traefik.ingress.kubernetes.io/router.tls: "true"
+    # traefik.ingress.kubernetes.io/router.tls.certresolver: default
 spec:
   rules:
-    - host: blog.tomarrell.com
+    - host: "blog.tomarrell.com"
       http:
         paths:
           - path: /
