@@ -12,4 +12,4 @@ commonLabels:
 images:
 - name: poker
   newName: docker.io/tomarrell/personal
-  newTag: poker-1b2bdf2ff7d7b3884acdaae048194af52849935c
+  newTag: poker-5c6bc41ce4265e001e75142845d9fd2126a49364
