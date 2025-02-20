@@ -13,9 +13,6 @@ spec:
           limits:
             cpu: "100m"
             memory: "128Mi"
-        env:
-        - name: RUST_LOG
-          value: "blog=trace,actix_web=trace"
         ports:
         - containerPort: 8080
       imagePullSecrets:
