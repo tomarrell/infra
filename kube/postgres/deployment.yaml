@@ -3,12 +3,18 @@ kind: Deployment
 metadata:
   name: postgres-deployment
 spec:
+  selector:
+    matchLabels:
+      app: postgres
   replicas: 1
   template:
+    metadata:
+      labels:
+        app: postgres
     spec:
       containers:
         - name: postgres
-          image: postgres:10.4
+          image: postgres:16.2
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
@@ -19,6 +25,13 @@ spec:
             - mountPath: "/var/lib/postgresql/data"
               name: postgresdb
               subPath: postgres
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
       volumes:
         - name: postgresdb
           persistentVolumeClaim:
