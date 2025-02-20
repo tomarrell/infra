@@ -1,6 +1,0 @@
-:8080
-
-log
-
-root ./static
-file_server
