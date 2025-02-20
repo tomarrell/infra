@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: salary-deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: salary
+        image: salary
+        resources:
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred

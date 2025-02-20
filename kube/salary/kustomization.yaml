@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- deployment.yaml
+- service.yaml
+
+commonLabels:
+  app: salary
+
+images:
+- name: salary
+  newName: docker.io/tomarrell/personal
+  newTag: salary-32627f1
