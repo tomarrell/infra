@@ -3,14 +3,23 @@ kind: Deployment
 metadata:
   name: poker-deployment
 spec:
+  selector:
+    matchLabels:
+      app: poker
   replicas: 1
   template:
+    metadata:
+      labels:
+        app: poker
     spec:
       containers:
       - name: poker
         image: poker
+        env:
+        - name: POKER_ADMIN_PASS
+          value: "sumup-and-poker-one-love"
         args:
-          - "-db=postgres://postgres:z5EdbhS0CFSFPvn788nVaopLCiJj1JedFb3UFhfHUY0=@10.43.19.40/postgres?sslmode=disable"
+          - "-db=postgres://postgres:z5EdbhS0CFSFPvn788nVaopLCiJj1JedFb3UFhfHUY0=@10.43.215.210/postgres?sslmode=disable"
           # - "-db=postgres://postgres:postgres@postgres-service/poker?sslmode=disable"
         ports:
         - containerPort: 8080

@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
 - deployment.yaml
 - service.yaml
-- ingress.yaml
 
 commonLabels:
   app: poker
@@ -12,4 +11,4 @@ commonLabels:
 images:
 - name: poker
   newName: docker.io/tomarrell/personal
-  newTag: poker-01982a4aab04492945530b91381a4a85238c79a7
+  newTag: poker-e9fc1a4c7b63e9fe0aae9960a26ad2008578e47e

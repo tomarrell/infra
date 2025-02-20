@@ -4,6 +4,8 @@ metadata:
   name: poker-service
 spec:
   type: ClusterIP
+  selector:
+    app: poker
   ports:
   - name: http
     port: 80
